@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button @click="login">Log in</button>
-    <button @click="logout">Log out</button>
+    <button v-if="!isAuthenticated" @click="login">Log in</button>
+    <button v-if="isAuthenticated" @click="logout">Log out</button>
     <pre>
       <code>{{ user }}</code>
     </pre>
@@ -13,6 +13,7 @@ export default {
   data() {
     return {
       user: this.$auth0.user,
+      isAuthenticated: this.$auth0.isAuthenticated,
     };
   },
   methods: {
