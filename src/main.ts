@@ -6,10 +6,10 @@ import store from './store';
 
 createApp(App).use(store).use(router).use(
   createAuth0({
-    domain: 'dev-x0dtyv186bbbfyta.us.auth0.com',
-    clientId: 'g9CdikxK4FWCUzqZ2oycsPXCBwpVi9BJ',
+    domain: process.env.VUE_APP_AUTH0_DOMAIN,
+    clientId: process.env.VUE_APP_AUTH0_CLIENT_ID,
     authorizationParams: {
-      redirect_uri: window.location.origin,
+      redirect_uri: process.env.VUE_APP_AUTH0_CALLBACK_URL,
     },
   }),
 )
