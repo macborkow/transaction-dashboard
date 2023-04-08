@@ -1,10 +1,25 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <span v-if='isAuthenticated'>
+      <router-link to="/dashboard"> Dashboard </router-link> |
+    </span>
+    <router-link to="/"> {{ isAuthenticated ? 'User info' : 'Login' }} </router-link>
   </nav>
   <router-view/>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'BaseLayout',
+  data() {
+    return {
+      isAuthenticated: this.$auth0.isAuthenticated,
+    };
+  },
+});
+</script>
 
 <style>
 #app {

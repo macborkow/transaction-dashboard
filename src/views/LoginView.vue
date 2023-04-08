@@ -8,8 +8,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   data() {
     return {
       user: this.$auth0.user,
@@ -18,11 +20,15 @@ export default {
   },
   methods: {
     login() {
-      this.$auth0.loginWithRedirect();
+      this.$auth0.loginWithRedirect({
+        appState: {
+          target: '/dashboard',
+        },
+      });
     },
     logout() {
       this.$auth0.logout({ logoutParams: { returnTo: window.location.origin } });
     },
   },
-};
+});
 </script>
