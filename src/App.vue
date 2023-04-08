@@ -1,9 +1,9 @@
 <template>
-  <nav>
+  <nav v-if='checkRoute'>
     <span v-if='isAuthenticated'>
       <router-link to="/dashboard"> Dashboard </router-link> |
+      <router-link to="/user"> User Info </router-link>
     </span>
-    <router-link to="/"> {{ isAuthenticated ? 'User info' : 'Login' }} </router-link>
   </nav>
   <router-view/>
 </template>
@@ -17,6 +17,12 @@ export default defineComponent({
     return {
       isAuthenticated: this.$auth0.isAuthenticated,
     };
+  },
+  computed: {
+    checkRoute() {
+      const viableRoutes = ['login', 'dashboard'];
+      return viableRoutes.find((item) => item === this.$route.name);
+    },
   },
 });
 </script>
