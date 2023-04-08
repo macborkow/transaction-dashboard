@@ -1,6 +1,7 @@
 import fs from 'fs';
 import faker from 'faker';
 import { nanoid } from 'nanoid';
+import { spawn } from 'child_process';
 
 const numCustomers = 10;
 const minTransactionsPerCustomer = 3;
@@ -52,4 +53,20 @@ const db = {
 
 // Write to file
 fs.writeFileSync('db.json', JSON.stringify(db, null, 2));
+console.log('db.json created.');
 
+const jsonServerProcess = spawn('npx', ['json-server', 'db.json']);
+
+jsonServerProcess.stdout.on('data', (data) => {
+    console.log(`${data}`);
+});
+
+jsonServerProcess.stderr.on('data', (data) => {
+    console.error(`${data}`);
+});
+
+process.on('SIGINT', () => {
+    console.log('\nStopping JSON Server...');
+    fs.unlinkSync('db.json');
+    console.log('db.json deleted.');
+});
