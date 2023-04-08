@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { authGuard } from '@auth0/auth0-vue';
 import LoginView from '../views/LoginView.vue';
-import Callback from '../views/Callback.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
