@@ -1,10 +1,31 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <nav v-if='checkRoute'>
+    <span v-if='isAuthenticated'>
+      <router-link to="/dashboard"> Dashboard </router-link> |
+      <router-link to="/user"> User Info </router-link>
+    </span>
   </nav>
   <router-view/>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'BaseLayout',
+  data() {
+    return {
+      isAuthenticated: this.$auth0.isAuthenticated,
+    };
+  },
+  computed: {
+    checkRoute() {
+      const viableRoutes = ['login', 'dashboard'];
+      return viableRoutes.find((item) => item === this.$route.name);
+    },
+  },
+});
+</script>
 
 <style>
 #app {
