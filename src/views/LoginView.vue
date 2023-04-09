@@ -2,7 +2,7 @@
   <div>
     <div v-if='!isAuthenticated'>
       <button v-if="!isLoading" @click="login">Log in</button>
-      <Spinner v-else />
+      <Spinner abs v-else />
     </div>
     <div v-if='isAuthenticated && !wasLoading'>
       <button @click="logout">Log out</button>
