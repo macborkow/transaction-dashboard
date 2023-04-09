@@ -1,5 +1,5 @@
 <template>
-  <nav v-if='checkRoute'>
+  <nav v-if='checkRoute && !isLoading'>
     <span v-if='isAuthenticated'>
       <router-link to="/dashboard"> Dashboard </router-link> |
       <router-link to="/user"> User Info </router-link>
@@ -16,6 +16,7 @@ export default defineComponent({
   data() {
     return {
       isAuthenticated: this.$auth0.isAuthenticated,
+      isLoading: this.$auth0.isLoading,
     };
   },
   computed: {
