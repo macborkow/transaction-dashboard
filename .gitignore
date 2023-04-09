@@ -24,3 +24,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# temp db file
+db.json

@@ -4,7 +4,7 @@
       <button v-if="!isLoading" @click="login">Log in</button>
       <Spinner v-else />
     </div>
-    <div v-if='isAuthenticated'>
+    <div v-if='isAuthenticated && !wasLoading'>
       <button @click="logout">Log out</button>
       <pre>
         <code>{{ user }}</code>
@@ -26,10 +26,20 @@ export default defineComponent({
       user: this.$auth0.user,
       isAuthenticated: this.$auth0.isAuthenticated,
       isLoading: this.$auth0.isLoading,
+      wasLoading: false,
     };
   },
+  watch: {
+    isAuthenticated() {
+      if (this.wasLoading) {
+        this.$router.push('/dashboard');
+      }
+    },
+  },
   mounted() {
-    console.log(this.$auth0);
+    if (this.isLoading) {
+      this.wasLoading = true;
+    }
   },
   methods: {
     login() {

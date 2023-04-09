@@ -18,7 +18,6 @@ export default defineComponent({
   async mounted() {
     this.customers = await fetch('http://localhost:3000/customers').then((r) => r.json());
     this.transactions = await fetch('http://localhost:3000/transactions').then((r) => r.json());
-    console.log(this.customers, this.transactions);
   },
 });
 </script>
