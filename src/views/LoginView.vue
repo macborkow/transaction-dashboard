@@ -2,7 +2,6 @@
   <div>
     <div v-if='!isAuthenticated'>
       <button v-if="!isLoading" @click="login">Log in</button>
-      <Spinner v-else />
     </div>
     <div v-if='isAuthenticated && !wasLoading'>
       <button @click="logout">Log out</button>
@@ -15,12 +14,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Spinner from '@/components/Spinner.vue';
 
 export default defineComponent({
-  components: {
-    Spinner,
-  },
   data() {
     return {
       user: this.$auth0.user,

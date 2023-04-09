@@ -36,7 +36,7 @@ for (let i = 0; i < numCustomers; i++) {
       date: date.toISOString(),
       amount: Math.round(Math.random() * 1000 * 100) / 100,
       description: `${faker.commerce.productAdjective()} ${faker.commerce.productMaterial()} ${faker.commerce.product()} for ${customer.name}`,
-      customer_id: customerId,
+      customerId,
     };
     transactions.push(transaction);
   }

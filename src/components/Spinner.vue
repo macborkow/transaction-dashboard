@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div :class='abs ? "flex abs" : "flex"'>
     <div class="lds-dual-ring"></div>
   </div>
 </template>
@@ -9,19 +9,27 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'SpinnerComponent',
+  props: {
+    abs: {
+      type: Boolean,
+      required: false,
+    },
+  },
 });
 </script>
 
 <style scoped>
 .flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.abs {
   position: absolute;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .lds-dual-ring {
   display: inline-block;

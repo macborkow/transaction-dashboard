@@ -1,5 +1,5 @@
 # transaction-dashboard
-ver. 0.2.2
+ver. 0.3.0
 
 ## Project setup
 ```

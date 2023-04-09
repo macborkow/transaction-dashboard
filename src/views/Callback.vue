@@ -1,5 +1,5 @@
 <template>
-  <Spinner />
+  <Spinner abs />
 </template>
 
 <script lang="ts">
