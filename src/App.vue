@@ -5,14 +5,19 @@
       <router-link to="/user"> User Info </router-link>
     </span>
   </nav>
-  <router-view/>
+  <Spinner abs v-else />
+  <router-view />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import Spinner from '@/components/Spinner.vue';
 
 export default defineComponent({
   name: 'BaseLayout',
+  components: {
+    Spinner,
+  },
   data() {
     return {
       isAuthenticated: this.$auth0.isAuthenticated,
