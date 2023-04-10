@@ -1,5 +1,6 @@
 <template>
-  <DateFilter @filtered=handleFilteredData :data=transactions />
+  <DateFilter @filtered=handleDateFilteredData :data=transactions />
+  <AmountFilter @filtered=handleAmountFilteredData :data=transactions />
   <Table v-if='transactions.length > 0'
     :data='refinedData'
     title='Transactions'
@@ -12,6 +13,7 @@ import { defineComponent } from 'vue';
 import Table from '@/components/Table.vue';
 import Spinner from '@/components/Spinner.vue';
 import DateFilter from '@/components/DateFilter.vue';
+import AmountFilter from '@/components/AmountFilter.vue';
 import { Transaction } from '@/common/types';
 
 export default defineComponent({
@@ -20,11 +22,13 @@ export default defineComponent({
     Table,
     Spinner,
     DateFilter,
+    AmountFilter,
   },
   data() {
     return {
       transactions: [] as Array<Transaction>,
-      filteredTransactions: [] as Array<Transaction>,
+      dateFilteredTransactions: [] as Array<Transaction>,
+      amountFilteredTransactions: [] as Array<Transaction>,
     };
   },
   computed: {
@@ -36,16 +40,24 @@ export default defineComponent({
       });
       return newData;
     },
+    filteredTransactions() : Array<Transaction> {
+      return this.amountFilteredTransactions
+        .filter((item : Transaction) => this.dateFilteredTransactions.includes(item));
+    },
   },
   methods: {
-    handleFilteredData(filteredData : Array<Transaction>) {
-      this.filteredTransactions = filteredData;
+    handleDateFilteredData(filteredData : Array<Transaction>) {
+      this.dateFilteredTransactions = filteredData;
+    },
+    handleAmountFilteredData(filteredData : Array<Transaction>) {
+      this.amountFilteredTransactions = filteredData;
     },
   },
   async mounted() {
     this.transactions = await fetch('http://localhost:3000/transactions')
       .then((r) => r.json());
-    this.filteredTransactions = this.transactions;
+    this.amountFilteredTransactions = this.transactions;
+    this.dateFilteredTransactions = this.transactions;
   },
 });
 </script>

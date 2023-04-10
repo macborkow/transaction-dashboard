@@ -1,0 +1,47 @@
+<template>
+  <label for="amountFilter">Amount Filter
+    <input @input=filterData v-model=from type="number" />
+    <input @input=filterData v-model=to type="number" />
+  </label>
+</template>
+
+<script lang="ts">
+import { defineComponent, PropType } from 'vue';
+import { Transaction } from '@/common/types';
+
+export default defineComponent({
+  name: 'AmountFilter',
+  props: {
+    data: {
+      type: Array as PropType<Transaction[]>,
+    },
+  },
+  data() {
+    return {
+      from: null,
+      to: null,
+    };
+  },
+  computed: {
+    filteredData() {
+      const to = this.to ? this.to : Infinity;
+      const from = this.from ? this.from : 0;
+      if (to > from) {
+        return this.data?.filter((item) => {
+          const { amount } = item;
+          return amount > from && amount < to;
+        });
+      }
+      return this.data;
+    },
+  },
+  methods: {
+    filterData() {
+      this.$emit('filtered', this.filteredData);
+    },
+  },
+});
+</script>
+
+<style scoped>
+</style>
