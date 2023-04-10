@@ -1,6 +1,6 @@
 <template>
   <Table v-if='transactions.length > 0'
-    :data='this.transactions'
+    :data='refinedData'
     title='Transactions'
   />
   <Spinner v-else />
@@ -16,7 +16,7 @@ interface Transaction {
   date: string;
   amount: number;
   description: string;
-  customerId: string;
+  customerId?: string;
 }
 
 export default defineComponent({
@@ -29,6 +29,16 @@ export default defineComponent({
     return {
       transactions: [] as Array<Transaction>,
     };
+  },
+  computed: {
+    refinedData() {
+      const newData : Array<Transaction> = this.transactions.map((item) => {
+        const newItem = { ...item };
+        delete newItem.customerId;
+        return newItem;
+      });
+      return newData;
+    },
   },
   async mounted() {
     this.transactions = await fetch('http://localhost:3000/transactions')
