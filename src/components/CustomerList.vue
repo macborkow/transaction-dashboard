@@ -11,12 +11,7 @@
 import { defineComponent } from 'vue';
 import Table from '@/components/Table.vue';
 import Spinner from '@/components/Spinner.vue';
-
-interface Customer {
-  id: string;
-  name: string;
-  email: string;
-}
+import { Customer } from '@/common/types';
 
 export default defineComponent({
   name: 'CustomerList',
