@@ -1,5 +1,5 @@
 <template>
-  <DateFilter />
+  <DateFilter @filtered=handleFilteredData :data=transactions />
   <Table v-if='transactions.length > 0'
     :data='refinedData'
     title='Transactions'
@@ -24,11 +24,12 @@ export default defineComponent({
   data() {
     return {
       transactions: [] as Array<Transaction>,
+      filteredTransactions: [] as Array<Transaction>,
     };
   },
   computed: {
-    refinedData() {
-      const newData : Array<Transaction> = this.transactions.map((item) => {
+    refinedData() : Array<Transaction> {
+      const newData = this.filteredTransactions.map((item) => {
         const newItem = { ...item };
         delete newItem.customerId;
         return newItem;
@@ -36,9 +37,15 @@ export default defineComponent({
       return newData;
     },
   },
+  methods: {
+    handleFilteredData(filteredData : Array<Transaction>) {
+      this.filteredTransactions = filteredData;
+    },
+  },
   async mounted() {
     this.transactions = await fetch('http://localhost:3000/transactions')
       .then((r) => r.json());
+    this.filteredTransactions = this.transactions;
   },
 });
 </script>
