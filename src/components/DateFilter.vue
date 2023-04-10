@@ -27,10 +27,8 @@ export default defineComponent({
       if (this.from && this.until) {
         const from = new Date(this.from).getTime();
         const until = new Date(this.until).getTime();
-        console.log(from, until);
         return this.data?.filter((item) => {
           const time = new Date(item.date).getTime();
-          console.log(time);
           return time > from && time < until;
         });
       }
@@ -39,7 +37,6 @@ export default defineComponent({
   },
   methods: {
     filterData() {
-      console.log(this.filteredData);
       this.$emit('filtered', this.filteredData);
     },
   },
