@@ -1,54 +1,38 @@
 <template>
-  <div class='dashboard' v-if='customers[0] && transactions[0]'>
-    <Table v-if='!showTransactions'
-      :data='this.customers'
-      title='Customers'
-      :sortable=true
-    />
-    <Table v-else
-      :headers='Object.keys(this.transactions[0])'
-      :data='this.transactions'
-      title='Transactions'
-    />
+  <div class='dashboard'>
+    <button @click='toggleShowTransactions'>
+      Show {{ showTransactions ? 'customers' : 'transactions' }}
+    </button>
+    <CustomerList v-if='!showTransactions'/>
+    <TransactionList v-else />
   </div>
-  <Spinner v-else />
 </template>
 
 <script lang='ts'>
 import { defineComponent } from 'vue';
-import Table from '@/components/Table.vue';
-import Spinner from '@/components/Spinner.vue';
-
-interface Customer {
-  id: string;
-  name: string;
-  email: string;
-}
-
-interface Transaction {
-  id: string;
-  date: string;
-  amount: number;
-  description: string;
-  customerId: string;
-}
+import CustomerList from '@/components/CustomerList.vue';
+import TransactionList from '@/components/TransactionList.vue';
 
 export default defineComponent({
   components: {
-    Table,
-    Spinner,
+    CustomerList,
+    TransactionList,
   },
-  name: 'HomeView',
+  name: 'DashboardView',
   data() {
     return {
-      customers: [] as Array<Customer>,
-      transactions: [] as Array<Transaction>,
       showTransactions: false as boolean,
     };
   },
-  async mounted() {
-    this.customers = await fetch('http://localhost:3000/customers').then((r) => r.json());
-    this.transactions = await fetch('http://localhost:3000/transactions').then((r) => r.json());
+  methods: {
+    toggleShowTransactions() {
+      this.showTransactions = !this.showTransactions;
+    },
   },
 });
 </script>
+
+<style scoped>
+  .dashboard {
+  }
+</style>

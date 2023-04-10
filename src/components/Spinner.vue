@@ -23,6 +23,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 25px;
 }
 .abs {
   position: absolute;
