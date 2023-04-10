@@ -6,7 +6,6 @@ export interface Transaction {
   customerId?: string;
 }
 
-
 export interface Customer {
   id: string;
   name: string;

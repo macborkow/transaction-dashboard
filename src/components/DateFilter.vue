@@ -3,6 +3,7 @@
     <input @change=filterData v-model=from type="date" />
     <input @change=filterData v-model=until type="date" />
   </label>
+  <p> {{ error }} </p>
 </template>
 
 <script lang="ts">
@@ -18,21 +19,29 @@ export default defineComponent({
   },
   data() {
     return {
-      from: '',
-      until: '',
+      from: null,
+      until: null,
     };
   },
   computed: {
     filteredData() {
-      if (this.from && this.until) {
-        const from = new Date(this.from).getTime();
-        const until = new Date(this.until).getTime();
+      const from = this.from ? new Date(this.from).getTime() : 0;
+      const until = this.until ? new Date(this.until).getTime() : Infinity;
+      if (from < until) {
         return this.data?.filter((item) => {
           const time = new Date(item.date).getTime();
           return time > from && time < until;
         });
       }
-      return this.data;
+      return [];
+    },
+    error() {
+      const from = this.from ? new Date(this.from).getTime() : 0;
+      const until = this.until ? new Date(this.until).getTime() : Infinity;
+      if (from > until) {
+        return 'Date from must be earlier than date until';
+      }
+      return '';
     },
   },
   methods: {
