@@ -75,6 +75,9 @@ export default defineComponent({
   },
   computed: {
     refinedHeaders(): RefinedHeader[] {
+      if (!this.data[0]) {
+        return [];
+      }
       return Object.keys(this.data[0] as ObjectWithMixedProperties)
         .map((item: string) => ({
           name: `${item}`,
