@@ -3,6 +3,7 @@
     <input @input=filterData v-model=from type="number" />
     <input @input=filterData v-model=to type="number" />
   </label>
+  <p> {{ error }} </p>
 </template>
 
 <script lang="ts">
@@ -33,6 +34,14 @@ export default defineComponent({
         });
       }
       return this.data;
+    },
+    error() {
+      const from = this.from ? this.from : 0;
+      const to = this.to ? this.to : Infinity;
+      if (from > to) {
+        return 'Amount from must be lower than amount to';
+      }
+      return '';
     },
   },
   methods: {
