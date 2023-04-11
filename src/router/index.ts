@@ -21,6 +21,11 @@ const routes: Array<RouteRecordRaw> = [
     beforeEnter: authGuard,
   },
   {
+    path: '/unsafe',
+    name: 'unsafe',
+    component: () => import('@/views/Dashboard.vue'),
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: '404',
     component: () => import('@/views/404.vue'),

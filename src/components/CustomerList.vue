@@ -25,8 +25,16 @@ export default defineComponent({
     };
   },
   async mounted() {
-    this.customers = await fetch('http://localhost:3000/customers')
-      .then((r) => r.json());
+    const accessToken = await this.$auth0.getAccessTokenSilently();
+    this.customers = await fetch(`${process.env.VUE_APP_API_SERVER_URL}/api/customers`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((body) => JSON.parse(body.data));
   },
 });
 </script>

@@ -5,7 +5,7 @@
       <router-link to="/user"> User Info </router-link>
     </span>
   </nav>
-  <Spinner abs v-else />
+  <Spinner abs v-else-if='checkRoute && isLoading' />
   <router-view />
 </template>
 

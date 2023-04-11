@@ -9,6 +9,7 @@ createApp(App).use(store).use(router).use(
     domain: process.env.VUE_APP_AUTH0_DOMAIN,
     clientId: process.env.VUE_APP_AUTH0_CLIENT_ID,
     authorizationParams: {
+      audience: process.env.VUE_APP_AUTH0_AUDIENCE,
       redirect_uri: process.env.VUE_APP_AUTH0_CALLBACK_URL,
     },
   }),

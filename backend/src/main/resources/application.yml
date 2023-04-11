@@ -1,0 +1,25 @@
+---
+
+application:
+  audience: ${env.AUTH0_AUDIENCE}
+  client-origin-url: ${env.CLIENT_ORIGIN_URL}
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+  port: ${env.PORT}
+
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://${env.AUTH0_DOMAIN}/
+  web:
+    resources:
+      add-mappings: false
+
+...

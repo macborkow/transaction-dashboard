@@ -47,15 +47,19 @@ transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
 
 // Create database object
 const db = {
-  customers,
-  transactions,
+  customers: {
+    data: JSON.stringify(customers, null, 2)
+  },
+  transactions: {
+    data: JSON.stringify(transactions, null, 2)
+  }
 };
 
 // Write to file
 fs.writeFileSync('db.json', JSON.stringify(db, null, 2));
 console.log('db.json created.');
 
-const jsonServerProcess = spawn('npx', ['json-server', 'db.json']);
+const jsonServerProcess = spawn('npx', ['json-server', 'db.json', '--routes', 'utils/routes.json']);
 
 jsonServerProcess.stdout.on('data', (data) => {
     console.log(`${data}`);

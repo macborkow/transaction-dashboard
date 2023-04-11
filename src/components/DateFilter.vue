@@ -12,6 +12,7 @@ import { Transaction } from '@/common/types';
 
 export default defineComponent({
   name: 'DateFilter',
+  emits: ['filtered'],
   props: {
     data: {
       type: Array as PropType<Transaction[]>,
