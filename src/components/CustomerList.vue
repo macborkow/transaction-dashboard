@@ -26,14 +26,15 @@ export default defineComponent({
   },
   async mounted() {
     const accessToken = await this.$auth0.getAccessTokenSilently();
-    this.customers = await fetch(`${process.env.VUE_APP_API_SERVER_URL}/customers`, {
+    this.customers = await fetch(`${process.env.VUE_APP_API_SERVER_URL}/api/customers`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
     })
-      .then((r) => r.json());
+      .then((r) => r.json())
+      .then((body) => JSON.parse(body.data));
   },
 });
 </script>
