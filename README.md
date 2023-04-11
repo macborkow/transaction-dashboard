@@ -1,5 +1,5 @@
 # transaction-dashboard
-ver. 0.4.0
+ver. 0.5.0
 
 ## Project setup
 ```
@@ -31,15 +31,22 @@ npm run test:e2e
 npm run lint
 ```
 
-### Starting mock server
+### Starts mock server
 ```
 npm run mock
 ```
 
-### Building and running docker container
+### Starts java backend
+The base of the application was created using the following [project](https://github.com/auth0-developer-hub/api_spring_java_hello-world/).
+```
+npm run be
+```
+
+### Builds and runs docker container
+Make sure you're in the root repository of the project where the Dockerfile resides.
 ```
 sudo docker build -t t-d-fe .
-sudo docker run -it -p 8080:80 --rm --name t-d-fe-container t-d-fe
+sudo docker run -it -p 8080:80 --rm t-d-fe
 ```
 
 ### Customize configuration
