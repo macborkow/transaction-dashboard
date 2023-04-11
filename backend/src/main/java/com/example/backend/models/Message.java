@@ -1,4 +1,4 @@
-package com.example.helloworld.models;
+package com.example.backend.models;
 
 import lombok.Value;
 

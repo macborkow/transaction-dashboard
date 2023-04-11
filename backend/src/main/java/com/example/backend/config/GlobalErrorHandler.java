@@ -1,4 +1,4 @@
-package com.example.helloworld.config;
+package com.example.backend.config;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import com.example.helloworld.models.ErrorMessage;
+import com.example.backend.models.ErrorMessage;
 
 @RestControllerAdvice
 public class GlobalErrorHandler {

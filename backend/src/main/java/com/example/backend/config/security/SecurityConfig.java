@@ -1,4 +1,4 @@
-package com.example.helloworld.config.security;
+package com.example.backend.config.security;
 
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.jwt.JwtValidators;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.example.helloworld.config.ApplicationProperties;
+import com.example.backend.config.ApplicationProperties;
 
 import lombok.RequiredArgsConstructor;
 

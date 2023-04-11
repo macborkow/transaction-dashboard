@@ -1,11 +1,11 @@
-package com.example.helloworld.controllers;
+package com.example.backend.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.helloworld.models.Message;
-import com.example.helloworld.services.MessageService;
+import com.example.backend.models.Message;
+import com.example.backend.services.MessageService;
 
 import lombok.RequiredArgsConstructor;
 
