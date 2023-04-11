@@ -1,5 +1,5 @@
 # transaction-dashboard
-ver. 0.3.0
+ver. 0.4.0
 
 ## Project setup
 ```
@@ -29,6 +29,17 @@ npm run test:e2e
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+### Starting mock server
+```
+npm run mock
+```
+
+### Building and running docker container
+```
+sudo docker build -t t-d-fe .
+sudo docker run -it -p 8080:80 --rm --name t-d-fe-container t-d-fe
 ```
 
 ### Customize configuration
