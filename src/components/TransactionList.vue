@@ -54,7 +54,14 @@ export default defineComponent({
     },
   },
   async mounted() {
-    this.transactions = await fetch('http://localhost:3000/transactions')
+    const accessToken = await this.$auth0.getAccessTokenSilently();
+    this.transactions = await fetch(`${process.env.VUE_APP_API_SERVER_URL}/transactions`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
       .then((r) => r.json());
     this.amountFilteredTransactions = this.transactions;
     this.dateFilteredTransactions = this.transactions;
