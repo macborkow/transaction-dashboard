@@ -1,0 +1,50 @@
+Starting a Gradle Daemon, 1 stopped Daemon could not be reused, use --status for details
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :bootJarMainClassName UP-TO-DATE
+> Task :bootJar UP-TO-DATE
+> Task :jar UP-TO-DATE
+> Task :assemble UP-TO-DATE
+> Task :checkstyleMain UP-TO-DATE
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :checkstyleTest NO-SOURCE
+
+> Task :sonarlintMain
+Errors occurred while build effective model from /home/mac/.gradle/caches/modules-2/files-2.1/org.eclipse.platform/org.eclipse.equinox.preferences/3.10.100/43fe3c49d5a6a30090b7081015e4a57bd0a6cb98/org.eclipse.equinox.preferences-3.10.100.pom:
+    'modelVersion' must be one of [4.0.0] but is '4.0'. in org.eclipse.platform:org.eclipse.equinox.preferences:3.10.100
+Errors occurred while build effective model from /home/mac/.gradle/caches/modules-2/files-2.1/org.eclipse.platform/org.eclipse.core.contenttype/3.8.200/e2fdb068262514474d73f236adaa821d9c861786/org.eclipse.core.contenttype-3.8.200.pom:
+    'modelVersion' must be one of [4.0.0] but is '4.0'. in org.eclipse.platform:org.eclipse.core.contenttype:3.8.200
+Unresolved imports/types have been detected during analysis. Enable DEBUG mode to see them.
+Use of preview features have been detected during analysis. Enable DEBUG mode to see them.
+5 SonarLint issue(s) where found. Max issue(s) allowed: 0.
+
+🤢 Smell 🌩  Crit. java:S1598 This file "JsonService.java" should be located in "com/example/demo/services" directory, not in "/home/mac/transaction-dashboard/backend/src/main/java/com/example/backend/services". at: src/main/java/com/example/backend/services/JsonService.java:1:8
+
+🤢 Smell 🌨  Major️ java:S112 Define and throw a dedicated exception instead of using a generic one. at: src/main/java/com/example/backend/controllers/JsonController.java:19:38
+
+🤢 Smell 🌨  Major️ java:S112 Define and throw a dedicated exception instead of using a generic one. at: src/main/java/com/example/backend/controllers/JsonController.java:24:41
+
+🤢 Smell 🌩  Crit. java:S1598 This file "JsonController.java" should be located in "com/example/demo/controllers" directory, not in "/home/mac/transaction-dashboard/backend/src/main/java/com/example/backend/controllers". at: src/main/java/com/example/backend/controllers/JsonController.java:1:8
+
+🤢 Smell 🌩  Crit. java:S1598 This file "Json.java" should be located in "com/example/demo/models" directory, not in "/home/mac/transaction-dashboard/backend/src/main/java/com/example/backend/models". at: src/main/java/com/example/backend/models/Json.java:1:8
+
+> Task :sonarlintMain FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':sonarlintMain'.
+> 5 SonarLint issue(s) where found. Max issue(s) allowed: 0.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 16s
+7 actionable tasks: 1 executed, 6 up-to-date
