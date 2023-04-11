@@ -1,5 +1,5 @@
 <template>
-  <div :class='abs ? "flex abs" : "flex"'>
+  <div :class='abs ? "flex abs" : "flex noabs"'>
     <div class="lds-dual-ring"></div>
   </div>
 </template>
@@ -23,6 +23,8 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.noabs {
   padding: 25px;
 }
 .abs {
