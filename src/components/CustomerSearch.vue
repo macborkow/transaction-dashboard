@@ -19,11 +19,16 @@ export default defineComponent({
   },
   data() {
     return {
-      search: null,
+      search: '',
     };
   },
   computed: {
     filteredData() {
+      if (this.search) {
+        return this.data?.filter(
+          (item) => item.email.includes(this.search) || item.name.includes(this.search),
+        );
+      }
       return this.data;
     },
     error() {
