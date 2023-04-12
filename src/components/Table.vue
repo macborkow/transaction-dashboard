@@ -6,7 +6,7 @@
         <th v-for="(header, index) in refinedHeaders" :key="header.name">
           {{ header.displayName }}
           <button @click=handleSortClick(index)
-            v-if='sortable'>
+            v-if='sortable && refinedData.length > 1'>
             <span v-if='index === sortTarget'>
             {{ sortDescending === 1 ? '▲' : '▼' }}
             </span>
