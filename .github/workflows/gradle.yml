@@ -1,0 +1,20 @@
+name: Build Gradle project
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - backend/**
+
+jobs:
+  build-gradle-project:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+    steps:
+    - name: Checkout project sources
+      uses: actions/checkout@v2
+    - name: Run build with Gradle Wrapper
+      run: ./gradlew build
