@@ -1,7 +1,7 @@
 <template>
   <CustomerSearch @filtered=handleCustomerSearch :data=customers />
   <Table v-if='customers.length > 0'
-    :data='this.customers'
+    :data='this.filteredCustomers'
     title='Customers'
     :sortable=true
   />
