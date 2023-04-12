@@ -80,6 +80,6 @@ sudo docker compose up
   It's prefered to use the dedicated Java backend as json-server's routes are not protected by oath.
   You can easily see that when you're not logged in by using [/unsafe](http:localhost:8080/unsafe) route on the frontend which is the dashboard without route guard in place. It work's just fine with the mock server but throws an error when using properly configured Java backend.
 [^3]: The base of the application was created using the following [project](https://github.com/auth0-developer-hub/api_spring_java_hello-world/).
-[^4]: To run the backend in either a docker container or using `npm run be` you must first build the application as shown in the Java part of the [Project setup](https://github.com/macborkow/transaction-dashboard#project-setup) section.
+[^4]: To run the backend in either a docker container or using `npm run be` you must first build the application as shown in the Java part of the [Project setup](#project-setup) section.
 [^5]: Make sure you're in the root repository of the project where the Dockerfile resides. 
   If you're root or use another privilege authorizator such as `doas` adjust accordingly.
