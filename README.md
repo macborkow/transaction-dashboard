@@ -1,4 +1,6 @@
 # transaction-dashboard
+![front-end CI](https://github.com/macborkow/transaction-dashboard/actions/workflows/node.js.yml/badge.svg)
+![back-end CI](https://github.com/macborkow/transaction-dashboard/actions/workflows/gradle.yml/badge.svg)
 *ver. 0.5.2*
 
 Dashboard that enables you to view customer and transaction data.
