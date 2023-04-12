@@ -65,6 +65,7 @@ sudo docker compose up
 ```
 
 [^1]: If you want to run the Java backend instead of the mock server then also use the commands below this annotation. Otherwise you can skip them.
+  To run the backend in a docker container you must first build the application as shown in the *Project setup* section.
 [^2]: Mock is a node script that generates database data and serves it using json-server.
   It's prefered to use the dedicated Java backend as json-server's routes are not protected by oath.
   You can easily see that when you're not logged in by using [/unsafe](http:localhost:8080/unsafe) route on the frontend which is the dashboard without route guard in place. It work's just fine with the mock server but throws an error when using properly configured Java backend.
