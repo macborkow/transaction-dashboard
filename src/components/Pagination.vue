@@ -46,10 +46,13 @@ export default defineComponent({
     visibleData() {
       const start = this.numberOfRows * this.currentPage;
       const end = start + this.numberOfRows;
-      return this.data.slice(start, end);
+      return this.data?.slice(start, end);
     },
     lastPage() {
-      return Math.floor((this.data.length - 1) / this.numberOfRows);
+      if (this.data) {
+        return Math.floor((this.data.length - 1) / this.numberOfRows);
+      }
+      return 0;
     },
     quickNavigationPages() {
       const from = Math.max(this.currentPage - 2, 0);
@@ -70,15 +73,16 @@ export default defineComponent({
     },
   },
   methods: {
-    updateRows(event) {
-      const newValue = parseInt(event.target.value, 10);
+    updateRows(event : Event) {
+      const eventTarget = event.target as HTMLInputElement;
+      const newValue = parseInt(eventTarget.value, 10);
       const preservedRatio = this.numberOfRows / newValue;
       const newCurrentPage = this.currentPage * preservedRatio;
       this.currentPage = Math.floor(newCurrentPage);
       this.numberOfRows = newValue;
       this.truncate();
     },
-    changePage(howMuch, relative = true) {
+    changePage(howMuch : number, relative = true) {
       if (relative) {
         this.currentPage += howMuch;
       } else {
