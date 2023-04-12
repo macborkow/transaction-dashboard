@@ -5,7 +5,8 @@
     title='Customers'
     :sortable=true
   />
-  <Spinner v-else />
+  <Spinner v-else-if=!error />
+  <Error v-if=error :message=error />
 </template>
 
 <script lang="ts">
@@ -14,6 +15,8 @@ import Table from '@/components/Table.vue';
 import Spinner from '@/components/Spinner.vue';
 import CustomerSearch from '@/components/CustomerSearch.vue';
 import { Customer } from '@/common/types';
+import apiCall from '@/services/api.service';
+import Error from '@/components/Error.vue';
 
 export default defineComponent({
   name: 'CustomerList',
@@ -21,25 +24,24 @@ export default defineComponent({
     Table,
     Spinner,
     CustomerSearch,
+    Error,
   },
   data() {
     return {
       customers: [] as Array<Customer>,
       filteredCustomers: [] as Array<Customer>,
+      error: '' as string,
     };
   },
   async mounted() {
-    const accessToken = await this.$auth0.getAccessTokenSilently();
-    this.customers = await fetch(`${process.env.VUE_APP_API_SERVER_URL}/api/customers`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-      .then((r) => r.json())
-      .then((body) => JSON.parse(body.data));
-    this.filteredCustomers = this.customers;
+    const response = await apiCall<Customer>({ endpoint: 'customers', token: this.$auth0.getAccessTokenSilently() });
+    if (response.data) {
+      this.customers = response.data;
+      this.filteredCustomers = this.customers;
+    } else {
+      this.customers = [];
+      this.error = response.error as string;
+    }
   },
   methods: {
     handleCustomerSearch(filteredData : Array<Customer>) {
