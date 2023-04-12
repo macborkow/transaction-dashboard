@@ -29,14 +29,11 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import Pagination from '@/components/Pagination.vue';
+import { ObjectWithMixedProperties } from '@/common/types';
 
 interface RefinedHeader {
   name: string;
   displayName: string;
-}
-
-interface ObjectWithMixedProperties {
-  [key: string]: string | number;
 }
 
 export default defineComponent({

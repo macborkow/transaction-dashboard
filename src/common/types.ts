@@ -11,3 +11,7 @@ export interface Customer {
   name: string;
   email: string;
 }
+
+export interface ObjectWithMixedProperties {
+  [key: string]: string | number;
+}

@@ -5,7 +5,8 @@
     :data='refinedData'
     title='Transactions'
   />
-  <Spinner v-else />
+  <Spinner v-else-if=!error />
+  <Error v-if=error :message=error />
 </template>
 
 <script lang="ts">
@@ -15,6 +16,8 @@ import Spinner from '@/components/Spinner.vue';
 import DateFilter from '@/components/DateFilter.vue';
 import AmountFilter from '@/components/AmountFilter.vue';
 import { Transaction } from '@/common/types';
+import apiCall from '@/services/api.service';
+import Error from '@/components/Error.vue';
 
 export default defineComponent({
   name: 'TransactionList',
@@ -23,12 +26,14 @@ export default defineComponent({
     Spinner,
     DateFilter,
     AmountFilter,
+    Error,
   },
   data() {
     return {
       transactions: [] as Array<Transaction>,
       dateFilteredTransactions: [] as Array<Transaction>,
       amountFilteredTransactions: [] as Array<Transaction>,
+      error: '' as string,
     };
   },
   computed: {
@@ -54,18 +59,15 @@ export default defineComponent({
     },
   },
   async mounted() {
-    const accessToken = await this.$auth0.getAccessTokenSilently();
-    this.transactions = await fetch(`${process.env.VUE_APP_API_SERVER_URL}/api/transactions`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-      .then((r) => r.json())
-      .then((body) => JSON.parse(body.data));
-    this.amountFilteredTransactions = this.transactions;
-    this.dateFilteredTransactions = this.transactions;
+    const response = await apiCall<Transaction>({ endpoint: 'transactions', token: this.$auth0.getAccessTokenSilently() });
+    if (response.data) {
+      this.transactions = response.data;
+      this.amountFilteredTransactions = this.transactions;
+      this.dateFilteredTransactions = this.transactions;
+    } else {
+      this.transactions = [];
+      this.error = response.error as string;
+    }
   },
 });
 </script>
