@@ -15,6 +15,10 @@ jobs:
       run:
         working-directory: ./backend
     steps:
+    - uses: actions/setup-java@v3
+      with:
+        distribution: temurin
+        java-version: 17
     - name: Checkout project sources
       uses: actions/checkout@v2
     - name: Run build with Gradle Wrapper
