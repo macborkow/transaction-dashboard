@@ -40,7 +40,7 @@ describe('Auth0', function () {
     cy.get('progress').next().should('have.text', '13/13');
     cy.get('nav button').next().contains('<').click();
     cy.get('progress').next().should('have.text', '12/13');
-    cy.get('nav button').next().next().contains('10').click();
+    cy.get('nav button').eq(2).contains('10').click();
     cy.get('progress').next().should('have.text', '10/13');
     cy.get('nav button').contains('<<').click();
     cy.get('progress').next().should('have.text', '1/13');
