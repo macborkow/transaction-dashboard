@@ -28,6 +28,9 @@ pnpm-debug.log*
 # temp db file
 db.json
 
+# test coverages
+coverage/
+
 # Compiled class file
 *.class
 

@@ -1,7 +1,7 @@
 <template>
   <label for="dateFilter">Date Filter
-    <input @change=filterData v-model=from type="date" />
-    <input @change=filterData v-model=until type="date" />
+    <input class='from' @change=filterData v-model=from type="date" />
+    <input class='until' @change=filterData v-model=until type="date" />
   </label>
   <p> {{ error }} </p>
 </template>

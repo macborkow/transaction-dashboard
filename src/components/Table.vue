@@ -4,7 +4,7 @@
     <thead>
       <tr>
         <th v-for="(header, index) in refinedHeaders" :key="header.name">
-          {{ header.displayName }}
+          <span>{{ header.displayName }}</span>
           <button @click=handleSortClick(index)
             v-if='sortable && refinedData.length > 1'>
             <span v-if='index === sortTarget'>
@@ -91,7 +91,7 @@ export default defineComponent({
         }));
     },
     refinedData() {
-      if (!this.sortable) {
+      if (!this.sortable || this.sortTarget === -1) {
         return this.data;
       }
       return this.data.slice()

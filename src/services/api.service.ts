@@ -5,7 +5,7 @@ interface ApiRequestParams {
 
 interface ApiResponse<T> {
     data: Array<T> | null;
-    error: unknown;
+    error: unknown | null;
 }
 
 async function apiCall<T>(params : ApiRequestParams) : Promise<ApiResponse<T>> {

@@ -51,6 +51,17 @@ export default defineComponent({
     },
   },
   methods: {
+    async fetchTransactions() {
+      const response = await apiCall<Transaction>({ endpoint: 'transactions', token: this.$auth0.getAccessTokenSilently() });
+      if (response.data) {
+        this.transactions = response.data;
+        this.amountFilteredTransactions = this.transactions;
+        this.dateFilteredTransactions = this.transactions;
+      } else {
+        this.transactions = [];
+        this.error = response.error as string;
+      }
+    },
     handleDateFilteredData(filteredData : Array<Transaction>) {
       this.dateFilteredTransactions = filteredData;
     },
@@ -59,15 +70,7 @@ export default defineComponent({
     },
   },
   async mounted() {
-    const response = await apiCall<Transaction>({ endpoint: 'transactions', token: this.$auth0.getAccessTokenSilently() });
-    if (response.data) {
-      this.transactions = response.data;
-      this.amountFilteredTransactions = this.transactions;
-      this.dateFilteredTransactions = this.transactions;
-    } else {
-      this.transactions = [];
-      this.error = response.error as string;
-    }
+    await this.fetchTransactions();
   },
 });
 </script>
