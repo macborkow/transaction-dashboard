@@ -1,4 +1,4 @@
-name: cypress
+name: e2e tests
 on: 
   pull_request:
     branches: [ "master" ]
@@ -19,7 +19,7 @@ jobs:
         with:
           start: npm run serve
           wait-on: http://localhost:8080/
-          config_file: cypress.json
+          config-file: cypress.json
           spec: "tests/e2e/**/*"
         env:
           CYPRESS_baseUrl: http://localhost:8080/
