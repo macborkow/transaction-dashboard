@@ -11,6 +11,7 @@ interface ApiResponse<T> {
 async function apiCall<T>(params : ApiRequestParams) : Promise<ApiResponse<T>> {
   try {
     const token = await params.token;
+    console.log(params.endpoint, `${process.env.VUE_APP_API_SERVER_URL}`);
     const response = await fetch(`${process.env.VUE_APP_API_SERVER_URL}/api/${params.endpoint}`, {
       method: 'GET',
       headers: {
