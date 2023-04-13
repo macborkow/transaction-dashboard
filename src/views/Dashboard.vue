@@ -1,6 +1,6 @@
 <template>
   <div class='dashboard'>
-    <button @click='toggleShowTransactions'>
+    <button class="outline contrast" @click='toggleShowTransactions'>
       Show {{ showTransactions ? 'customers' : 'transactions' }}
     </button>
     <CustomerList v-if='!showTransactions'/>
@@ -33,6 +33,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .dashboard {
-  }
+button {
+  width: max-content;
+  font-size: 2vh;
+}
 </style>

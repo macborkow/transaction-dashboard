@@ -1,17 +1,20 @@
 <template>
-  <table>
+  <table role="grid">
     <caption> {{ title }} </caption>
     <thead>
       <tr>
         <th v-for="(header, index) in refinedHeaders" :key="header.name">
-          <span>{{ header.displayName }}</span>
-          <button @click=handleSortClick(index)
-            v-if='sortable && refinedData.length > 1'>
-            <span v-if='index === sortTarget'>
-            {{ sortDescending === 1 ? '▲' : '▼' }}
-            </span>
-            <span v-else class='inactive'>▼</span>
-          </button>
+          <span class="clump">
+            <span>{{ header.displayName }}</span>
+            <button @click=handleSortClick(index)
+              class="outline contrast"
+              v-if='sortable && refinedData.length > 1'>
+              <span v-if='index === sortTarget'>
+              {{ sortDescending === 1 ? '▲' : '▼' }}
+              </span>
+              <span v-else class='inactive'>▼</span>
+            </button>
+          </span>
         </th>
       </tr>
     </thead>
@@ -113,6 +116,20 @@ export default defineComponent({
 
 <style scoped>
 .inactive {
-  color: lightgray;
+  color: gray;
+}
+.clump {
+  display: flex;
+  align-items: center;
+  height: 5vh;
+}
+button {
+  width: 5vw;
+  min-width: max-content;
+  margin-top: 3vh;
+  transform: scale(0.5);
+}
+caption {
+  font-size: 3vh;
 }
 </style>

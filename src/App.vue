@@ -1,12 +1,18 @@
 <template>
-  <nav v-if='checkRoute && !isLoading'>
+  <main class="container">
+  <nav class="grid" v-if='checkRoute && !isLoading'>
     <span v-if='isAuthenticated'>
-      <router-link to="/dashboard"> Dashboard </router-link> |
-      <router-link to="/user"> User Info </router-link>
+      <router-link role="button" class="outline"
+      :class="currentRoute === 'dashboard' ? 'contrast' : 'secondary'"
+      to="/dashboard"> Dashboard </router-link>
+      <router-link role="button" class="outline"
+      :class="currentRoute === 'login' ? 'contrast' : 'secondary'"
+      to="/user"> User Profile </router-link>
     </span>
   </nav>
   <Spinner abs v-else-if='checkRoute && isLoading' />
   <router-view />
+  </main>
 </template>
 
 <script lang="ts">
@@ -29,29 +35,21 @@ export default defineComponent({
       const viableRoutes = ['login', 'dashboard'];
       return viableRoutes.find((item) => item === this.$route.name);
     },
+    currentRoute() {
+      return this.$route.name;
+    },
   },
 });
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style scoped>
+span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+span * {
+  margin: 2vh 0;
+  font-size: 2vh;
 }
 </style>

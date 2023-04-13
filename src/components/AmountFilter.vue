@@ -1,7 +1,9 @@
 <template>
   <label for="amountFilter">Amount Filter
-    <input @input=filterData v-model=from type="number" />
-    <input @input=filterData v-model=to type="number" />
+    <span class="grid">
+      <input @input=filterData v-model=from type="number" />
+      <input @input=filterData v-model=to type="number" />
+    </span>
   </label>
   <p> {{ error }} </p>
 </template>
@@ -40,7 +42,7 @@ export default defineComponent({
       const from = this.from ? this.from : 0;
       const to = this.to ? this.to : Infinity;
       if (from > to) {
-        return 'Amount from must be lower than amount to';
+        return 'First amount must be lower than second amount.';
       }
       return '';
     },
@@ -54,4 +56,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+p {
+  text-align: center;
+}
 </style>

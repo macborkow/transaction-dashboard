@@ -1,10 +1,12 @@
 <template>
-  <CustomerSearch @filtered=handleCustomerSearch :data=customers />
-  <Table v-if='customers.length > 0'
-    :data='this.filteredCustomers'
-    title='Customers'
-    :sortable=true
-  />
+  <span v-if='customers.length > 0'>
+    <Table
+      :data='this.filteredCustomers'
+      title='Customers'
+      :sortable=true
+    />
+    <CustomerSearch @filtered=handleCustomerSearch :data=customers />
+  </span>
   <Spinner v-else-if=!error />
   <Error v-if=error :message=error />
 </template>

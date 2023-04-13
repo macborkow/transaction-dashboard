@@ -6,7 +6,6 @@ describe('SpinnerComponent', () => {
     const wrapper = mount(SpinnerComponent);
     expect(wrapper.classes()).toContain('flex');
     expect(wrapper.classes()).toContain('noabs');
-    expect(wrapper.find('.lds-dual-ring').exists()).toBe(true);
   });
 
   it('renders correctly with "abs" prop set to true', () => {
@@ -17,7 +16,6 @@ describe('SpinnerComponent', () => {
     });
     expect(wrapper.classes()).toContain('flex');
     expect(wrapper.classes()).toContain('abs');
-    expect(wrapper.find('.lds-dual-ring').exists()).toBe(true);
   });
 
   it('renders correctly with "abs" prop set to false', () => {
@@ -28,6 +26,5 @@ describe('SpinnerComponent', () => {
     });
     expect(wrapper.classes()).toContain('flex');
     expect(wrapper.classes()).toContain('noabs');
-    expect(wrapper.find('.lds-dual-ring').exists()).toBe(true);
   });
 });

@@ -74,6 +74,6 @@ describe('AmountFilter', () => {
     wrapper.find('input[type="number"]').setValue(300);
     wrapper.findAll('input[type="number"]').at(1).setValue(200);
     await wrapper.vm.$nextTick();
-    expect(wrapper.find('p').text()).toBe('Amount from must be lower than amount to');
+    expect(wrapper.find('p').text()).toBe('First amount must be lower than second amount.');
   });
 });
