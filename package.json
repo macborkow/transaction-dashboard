@@ -41,6 +41,7 @@
     "eslint-plugin-vue": "^8.0.3",
     "eslint-plugin-vuejs-accessibility": "^1.1.0",
     "faker": "^5.5.3",
+    "istanbul-badges-readme": "^1.8.5",
     "jest": "^27.0.5",
     "jest-fetch-mock": "^3.0.3",
     "json-server": "^0.17.3",
@@ -75,7 +76,9 @@
       }
     ]
   },
-  "eslintIgnore": [ "tests/*" ],
+  "eslintIgnore": [
+    "tests/*"
+  ],
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -84,12 +87,15 @@
   ],
   "jest": {
     "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel",
-		"collectCoverage": true,
-		"collectCoverageFrom": [
-			"src/**/*.{js,vue}",
-			"!src/main.js"
-		]
-	},
+    "coverageReporters": [
+      "json-summary"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,vue}",
+      "!src/main.js"
+    ]
+  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
