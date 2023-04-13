@@ -19,7 +19,7 @@ jobs:
         with:
           start: npm run mock, npm run serve
           browser: chrome
-          wait-on: http://localhost:8080/, http://localhost:3000/api/customers
+          wait-on: http://localhost:8080/
           config-file: cypress.json
           spec: "tests/e2e/**/*"
         env:

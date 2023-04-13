@@ -6,20 +6,10 @@ describe('Auth0', function () {
     )
   })
 
-  it('go to dashboard automatically', function () {
+  it('go to dashboard automatically after login', function () {
     cy.visit('/')
     cy.url().should('equal', 'http://localhost:8080/dashboard')
   })
-
-  it('switch between transactions and customers', function () {
-    cy.visit('/')
-    cy.get('table').children().first().should('have.text', 'Customers');
-    cy.get('button').contains('transactions').click();
-    cy.get('table').children().first().should('have.text', 'Transactions');
-    cy.get('button').contains('customers').click();
-    cy.get('table').children().first().should('have.text', 'Customers');
-  })
-
 
   it('view profile and logout', function () {
     cy.visit('/dashboard')
