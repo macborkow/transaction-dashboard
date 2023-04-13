@@ -56,7 +56,7 @@ describe('DateFilter', () => {
     await wrapper.find('input[type="date"].until').setValue('2022-04-14');
 
     // Assert that the error message is displayed
-    expect(wrapper.find('p').text()).toBe('Date from must be earlier than date until');
+    expect(wrapper.find('p').text()).toBe('First date must be earlier than second date.');
   });
 
   it('does not display an error message when dates are in the correct order', async () => {

@@ -19,11 +19,11 @@ describe('TableComponent', () => {
 
   it('renders a table with proper headers', () => {
     expect(wrapper.find('table')).toBeTruthy();
-    expect(wrapper.find('thead th:first-child span').text()).toEqual('Id');
+    expect(wrapper.find('thead th:first-child span span').text()).toEqual('Id');
     expect(wrapper.findAll('thead th').length).toEqual(3);
-    expect(wrapper.find('thead th:first-child span').text()).toEqual('Id');
-    expect(wrapper.find('thead th:nth-child(2) span').text()).toEqual('Name');
-    expect(wrapper.find('thead th:last-child span').text()).toEqual('Age');
+    expect(wrapper.find('thead th:first-child span span').text()).toEqual('Id');
+    expect(wrapper.find('thead th:nth-child(2) span span').text()).toEqual('Name');
+    expect(wrapper.find('thead th:last-child span span').text()).toEqual('Age');
   });
 
   it('renders the data rows in the table body', async () => {

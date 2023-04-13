@@ -1,10 +1,12 @@
 <template>
-  <DateFilter @filtered=handleDateFilteredData :data=transactions />
-  <AmountFilter @filtered=handleAmountFilteredData :data=transactions />
-  <Table v-if='transactions.length > 0'
-    :data='refinedData'
-    title='Transactions'
-  />
+  <span v-if='transactions.length > 0'>
+    <Table
+      :data='refinedData'
+      title='Transactions'
+    />
+    <DateFilter @filtered=handleDateFilteredData :data=transactions />
+    <AmountFilter @filtered=handleAmountFilteredData :data=transactions />
+  </span>
   <Spinner v-else-if=!error />
   <Error v-if=error :message=error />
 </template>

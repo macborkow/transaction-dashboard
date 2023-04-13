@@ -1,7 +1,9 @@
 <template>
   <label for="dateFilter">Date Filter
-    <input class='from' @change=filterData v-model=from type="date" />
-    <input class='until' @change=filterData v-model=until type="date" />
+    <span class="grid">
+      <input class='from' @change=filterData v-model=from type="date" />
+      <input class='until' @change=filterData v-model=until type="date" />
+    </span>
   </label>
   <p> {{ error }} </p>
 </template>
@@ -40,7 +42,7 @@ export default defineComponent({
       const from = this.from ? new Date(this.from).getTime() : 0;
       const until = this.until ? new Date(this.until).getTime() : Infinity;
       if (from > until) {
-        return 'Date from must be earlier than date until';
+        return 'First date must be earlier than second date.';
       }
       return '';
     },
@@ -54,4 +56,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+p {
+  text-align: center;
+}
 </style>

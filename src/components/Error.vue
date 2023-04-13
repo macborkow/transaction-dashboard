@@ -41,7 +41,6 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border: black 3px solid;
   z-index: 0;
 }
 button {

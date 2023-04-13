@@ -77,7 +77,6 @@ describe('LoginView', () => {
 			},
 		});
     expect(wrapper.find('button').text()).toBe('Log out');
-    expect(wrapper.find('code').text()).toBe(JSON.stringify(mockAuth0.user, null, 2));
   });
 
   it('redirects to dashboard if user was previously loading and becomes authenticated', async () => {

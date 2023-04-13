@@ -1,28 +1,40 @@
 <template>
-  <nav v-if="lastPage > 0">
-  <button v-if="currentPage > 1" @click="changePage(0, false)">
-  ◄◄
-  </button>
-  <button v-if="currentPage > 0" @click=changePage(-1)>
-  ◄
-  </button>
-  <button v-for="item in quickNavigationPages" v-bind:key=item.id @click="changePage(item, false)">
-    {{ item + 1 }}
-  </button>
-  <button v-if="currentPage < lastPage" @click=changePage(1)>
-  ►
-  </button>
-  <button v-if="currentPage < lastPage - 1" @click="changePage(lastPage, false)">
-  ►►
-  </button>
+  <div v-if="lastPage > 0">
+  <nav class="flex" v-if="lastPage > 0">
+    <nav class="cluster">
+      <button class="secondary" v-if="currentPage > 1" @click="changePage(0, false)">
+      &lt;&lt;
+      </button>
+      <button class="secondary" v-if="currentPage > 0" @click=changePage(-1)>
+      &lt;
+      </button>
+    </nav>
+    <nav>
+      <button v-for="(item, index) in quickNavigationPages"
+      :class='currentPage === item ? "contrast" : "secondary"'
+      v-bind:key=index @click="changePage(item, false)">
+        {{ item + 1 }}
+      </button>
+    </nav>
+    <nav class="cluster">
+      <button class="secondary" v-if="currentPage < lastPage" @click=changePage(1)>
+      &gt;
+      </button>
+      <button class="secondary" v-if="currentPage < lastPage - 1"
+      @click="changePage(lastPage, false)">
+      &gt;&gt;
+      </button>
+    </nav>
   </nav>
+  <progress :value="currentPage" :max="lastPage"></progress>
+  <p> {{ currentPage + 1 }}/{{ lastPage + 1 }} </p>
+  </div>
   <label for="amountRows">Rows to show
     <select @change=updateRows name="amountRows">
       <option value=5>5</option>
       <option value=10>10</option>
     </select>
   </label>
-  <p> {{ currentPage + 1 }}/{{ lastPage + 1 }} </p>
 </template>
 
 <script lang="ts">
@@ -68,6 +80,11 @@ export default defineComponent({
     data: {
       immediate: true,
       handler() {
+        if (this.currentPage > this.lastPage) {
+          this.currentPage = this.lastPage;
+        } else if (this.currentPage < 0) {
+          this.currentPage = 0;
+        }
         this.truncate();
       },
     },
@@ -103,4 +120,22 @@ export default defineComponent({
 </script>
 
 <style scoped>
+nav {
+  margin-bottom: 1vh;
+}
+button {
+  margin: 0 0.1vw;
+  width: max-content;
+  transform: scale(0.8);
+}
+.cluster {
+  minwidth: 5vw;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+select {
+  width: max-content;
+}
 </style>
