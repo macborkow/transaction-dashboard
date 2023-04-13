@@ -1,7 +1,7 @@
 # transaction-dashboard
 ![front-end CI](https://github.com/macborkow/transaction-dashboard/actions/workflows/node.js.yml/badge.svg)
 ![back-end CI](https://github.com/macborkow/transaction-dashboard/actions/workflows/gradle.yml/badge.svg)
-*ver. 0.6.0*
+*ver. 0.7.0*
 
 Dashboard that enables you to view customer and transaction data.
 
@@ -77,6 +77,8 @@ sudo docker compose up
 1. Separate components were created for each of the filtering and searching functionalities. Despite their resemblance, after careful consideration, the author decided to keep them separate instead of creating more generalized component, thus breaking the DRY principle, in favour of reducing performance overhead.
 2. The Java backend is at the current moment serving static Json files generated using a modified version of the mock server script. For the sake of this project it was deemed enough. At the same time the solid foundation including integrated oauth authorization is already created thus it would be trivial to extend the application with a RESTful API.
 3. Creating global css file with definitions for classes such flexbox to center content could be considered to reduce repeated code.
+4. Better usage of the store would be beneficial. For example caching api responses, global error handling and preserving state of filtering input when switching routes.
+5. Additional work to make tests properly typed and better organized should be considered. Nevertheless in a short amount of time coverage of over 90% was achieved.
 
 [^1]: If you want to run the Java backend instead of the mock server then also use the commands below this annotation. Otherwise you can skip them.
 [^2]: Mock is a node script that generates database data and serves it using json-server.
