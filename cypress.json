@@ -1,3 +1,20 @@
 {
-  "pluginsFile": "tests/e2e/plugins/index.js"
+  "pluginsFile": "tests/e2e/plugins/index.js",
+  "chromeWebSecurity": false,
+  "e2e": {
+    "baseUrl": "http://localhost:8080/",
+    "experimentalSessionAndOrigin": true
+  },
+  "experiments": {
+    "experimentalSessionAndOrigin": true
+  },
+  "env": {
+    "auth0_username": "test@example.com",
+    "auth0_password": "Password1234!",
+    "auth0_domain": "dev-x0dtyv186bbbfyta.us.auth0.com",
+    "auth0_audience": "https://api-server.example.com",
+    "auth0_scope": "",
+    "auth0_client_id": "g9CdikxK4FWCUzqZ2oycsPXCBwpVi9BJ",
+    "auth0_client_secret": "Fa34RcQNZer8S7mWlgC3Zuj3cFlK9RhueBOM1LvRD6uN_9IZR4sTOyUoGDx1OlSb"
+  }
 }

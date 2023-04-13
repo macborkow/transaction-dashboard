@@ -1,10 +1,11 @@
 {
   "name": "transaction-dashboard",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "mock": "node utils/mockServer.mjs",
+    "serve-mock": "npm run serve & npm run mock",
     "be": "cd ./backend/ && ./gradlew bootRun",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
