@@ -34,16 +34,19 @@ export default defineComponent({
     };
   },
   async mounted() {
-    const response = await apiCall<Customer>({ endpoint: 'customers', token: this.$auth0.getAccessTokenSilently() });
-    if (response.data) {
-      this.customers = response.data;
-      this.filteredCustomers = this.customers;
-    } else {
-      this.customers = [];
-      this.error = response.error as string;
-    }
+    await this.fetchCustomers();
   },
   methods: {
+    async fetchCustomers() {
+      const response = await apiCall<Customer>({ endpoint: 'customers', token: this.$auth0.getAccessTokenSilently() });
+      if (response.data) {
+        this.customers = response.data;
+        this.filteredCustomers = this.customers;
+      } else {
+        this.customers = [];
+        this.error = response.error as string;
+      }
+    },
     handleCustomerSearch(filteredData : Array<Customer>) {
       this.filteredCustomers = filteredData;
     },
