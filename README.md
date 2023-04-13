@@ -75,6 +75,11 @@ Alternatively you can simply run below[^4]:
 sudo docker compose up
 ```
 
+### CI/CD
+Currently the project is set up to build and test the Vue application using npm and github actions for each PR to master. Likewise with the Java backend using gradlew, but in the case of the backend the pipeline is triggered only when code is pushed to the `backend/` directory.
+
+For deployment AWS was considered. Since the application is fully dockerized AWS ECS could've been used together with AWS Fargate and AWS ECR respository. Pipelines for deploying docker containers to AWS are readily available in the github actions hub.
+
 #### Extra considerations
 
 1. Separate components were created for each of the filtering and searching functionalities. Despite their resemblance, after careful consideration, the author decided to keep them separate instead of creating more generalized component, thus breaking the DRY principle, in favour of reducing performance overhead.
