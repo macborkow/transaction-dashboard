@@ -1,4 +1,4 @@
-name: e2e tests
+name: E2E tests
 on: 
   pull_request:
     branches: [ "master" ]
@@ -17,7 +17,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          start: npm run serve
+          start: npm run mock & npm run serve
+          browser: chrome
           wait-on: http://localhost:8080/
           config-file: cypress.json
           spec: "tests/e2e/**/*"

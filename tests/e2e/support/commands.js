@@ -53,7 +53,12 @@ Cypress.Commands.add('loginToAuth0', (username, password) => {
   })
   log.snapshot('before')
 
-  loginViaAuth0Ui(username, password)
+  cy.session(
+    `auth0-${username}`,
+    () => {
+      loginViaAuth0Ui(username, password)
+    },
+  )
 
   log.snapshot('after')
   log.end()
