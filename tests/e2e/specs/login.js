@@ -20,6 +20,7 @@ describe('Auth0', function () {
     cy.get('table').children().first().should('have.text', 'Customers');
   })
 
+
   it('view profile and logout', function () {
     cy.visit('/dashboard')
     cy.get('a').contains('User Profile').click();

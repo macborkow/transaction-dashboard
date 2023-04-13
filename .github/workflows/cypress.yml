@@ -17,9 +17,9 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          start: npm run serve-mock
+          start: npm run mock, npm run serve
           browser: chrome
-          wait-on: http://localhost:8080/
+          wait-on: http://localhost:8080/, http://localhost:3000/
           config-file: cypress.json
           spec: "tests/e2e/**/*"
         env:
