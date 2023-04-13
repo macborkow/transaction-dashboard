@@ -17,7 +17,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          start: npm run mock & npm run serve
+          start: npm run serve-mock
           browser: chrome
           wait-on: http://localhost:8080/
           config-file: cypress.json
