@@ -1,3 +1,5 @@
+# This workflow was not ultimately used due to github environment not playing nicely with the mock json-server. Except for connecting to localhost:3000 the pipeline runs fine but the integration tests fail without a working backend.
+
 name: E2E tests
 on: 
   push:
