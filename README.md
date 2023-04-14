@@ -3,9 +3,6 @@
 ![back-end CI](https://github.com/macborkow/transaction-dashboard/actions/workflows/gradle.yml/badge.svg)
 [![Deploy to Amazon ECS](https://github.com/macborkow/transaction-dashboard/actions/workflows/aws.yml/badge.svg)](https://github.com/macborkow/transaction-dashboard/actions/workflows/aws.yml)
 *ver. 1.0.0*
-| Statements                  | Branches                | Functions                 | Lines             |
-| --------------------------- | ----------------------- | ------------------------- | ----------------- |
-| ![Statements](https://img.shields.io/badge/statements-84.56%25-yellow.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-75.95%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-89.7%25-yellow.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-86.71%25-yellow.svg?style=flat) |
 
 Dashboard that enables you to view customer and transaction data.
 
@@ -39,6 +36,9 @@ npm run build
 ```
 npm run test:unit
 ```
+| Statements                  | Branches                | Functions                 | Lines             |
+| --------------------------- | ----------------------- | ------------------------- | ----------------- |
+| ![Statements](https://img.shields.io/badge/statements-84.56%25-yellow.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-75.95%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-89.7%25-yellow.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-86.71%25-yellow.svg?style=flat) |
 
 ### Run your end-to-end tests *requires running backend/mock-server*
 ```
