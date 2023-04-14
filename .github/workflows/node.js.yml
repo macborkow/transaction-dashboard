@@ -8,10 +8,6 @@ on:
     branches: [ "master" ]
     paths-ignore:
       - backend/**
-  push:
-    branches: [ "feature/github-actions" ]
-    paths-ignore:
-      - backend/**
 
 jobs:
   build:

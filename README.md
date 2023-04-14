@@ -1,6 +1,7 @@
 # transaction-dashboard
 ![front-end CI](https://github.com/macborkow/transaction-dashboard/actions/workflows/node.js.yml/badge.svg)
 ![back-end CI](https://github.com/macborkow/transaction-dashboard/actions/workflows/gradle.yml/badge.svg)
+[![Deploy to Amazon ECS](https://github.com/macborkow/transaction-dashboard/actions/workflows/aws.yml/badge.svg)](https://github.com/macborkow/transaction-dashboard/actions/workflows/aws.yml)
 *ver. 0.9.0*
 | Statements                  | Branches                | Functions                 | Lines             |
 | --------------------------- | ----------------------- | ------------------------- | ----------------- |
@@ -78,7 +79,9 @@ sudo docker compose up
 ### CI/CD
 Currently the project is set up to build and test the Vue application using npm and github actions for each PR to master. Likewise with the Java backend using gradlew, but in the case of the backend the pipeline is triggered only when code is pushed to the `backend/` directory.
 
-For deployment AWS was considered. Since the application is fully dockerized AWS ECS could've been used together with AWS Fargate and AWS ECR respository. Pipelines for deploying docker containers to AWS are readily available in the github actions hub.
+For deployment AWS was used. Since the application is fully dockerized AWS ECS together with AWS Fargate and AWS ECR respository were utilized. 
+
+Pipelines for deploying to AWS and for CI can be found in the .github/workflows/ directory.
 
 #### Extra considerations
 
